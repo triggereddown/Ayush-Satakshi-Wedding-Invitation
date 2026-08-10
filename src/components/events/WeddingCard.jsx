@@ -1,6 +1,7 @@
 import { FadeIn } from '../shared/FadeIn';
 import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
+import { ChromaKeyImage } from '../shared/ChromaKeyImage';
 
 export function WeddingCard({ event }) {
   return (
@@ -17,12 +18,12 @@ export function WeddingCard({ event }) {
         className="event-card-bg"
         loading="lazy"
       />
-      {/* Warm maroon overlay */}
+      {/* Very subtle tint — no white cast */}
       <div
         className="event-card-overlay"
         style={{
           background:
-            'linear-gradient(180deg, rgba(180,50,70,0.15) 0%, rgba(255,248,240,0.55) 30%, rgba(255,252,247,0.72) 100%)',
+            'linear-gradient(180deg, rgba(180,50,70,0.05) 0%, rgba(255,248,240,0.08) 50%, rgba(255,252,247,0.12) 100%)',
         }}
       />
 
@@ -77,15 +78,23 @@ export function WeddingCard({ event }) {
           </div>
         </FadeIn>
 
-        {/* Wedding couple illustration */}
+        {/* Bengali couple illustration at bottom — increased opacity & transparent background */}
         <FadeIn delay={200}>
-          <img
-            src={assets.weddingCouple}
-            alt="Wedding couple"
-            className="event-couple-illustration"
-            style={{ marginTop: 24 }}
-            loading="lazy"
-          />
+          <div style={{ opacity: 0.85, marginTop: 24, pointerEvents: 'none' }}>
+            <ChromaKeyImage
+              src="/generated/bengali_couple_no_specs.png"
+              alt="Bengali couple illustration"
+              tolerance={50}
+              style={{
+                width: '85%',
+                maxWidth: 320,
+                height: 'auto',
+                objectFit: 'contain',
+                margin: '0 auto',
+                display: 'block',
+              }}
+            />
+          </div>
         </FadeIn>
       </div>
     </section>

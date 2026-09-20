@@ -39,9 +39,10 @@ export const weddingConfig = {
     city: 'Kolkata',
     fullAddress: 'Dum Dum,Near International Airport Kolkata',
     tagline: 'Where our forever begins.',
-    mapsUrl: 'https://maps.app.goo.gl/AXdXrMzRnsrMhEyT7',
+    mapsUrl:
+      'https://www.google.com/maps/place/Hotel+Ra+Vista/@22.6439183,88.4325539,17z/data=!3m1!4b1!4m9!3m8!1s0x39f89f0044c77801:0x425b27447e9b5506!5m2!4m1!1i2!8m2!3d22.6439183!4d88.4325539!16s%2Fg%2F11vrds143l?entry=ttu',
     mapEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.35771847!2d78.24323205!3d17.41260022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1720000000000!5m2!1sen!2sin',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.493976867375!2d88.4325539!3d22.6439183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89f0044c77801%3A0x425b27447e9b5506!2sHotel%20Ra%20Vista!5e0!3m2!1sen!2sin!4v1726859000000!5m2!1sen!2sin',
   },
 
   // ─── Events Schedule Section ──────────────────────────────

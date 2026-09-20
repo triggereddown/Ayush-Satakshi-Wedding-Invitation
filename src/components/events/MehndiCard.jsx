@@ -3,6 +3,7 @@ import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
 
 export function MehndiCard({ event }) {
+  if (!event) return null;
   return (
     <section
       className="event-card event-card-mehndi"

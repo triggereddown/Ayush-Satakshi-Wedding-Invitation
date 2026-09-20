@@ -3,10 +3,11 @@ import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
 
 const eventImages = {
-  haldi:   assets.haldiCouple,
-  mehndi:  assets.mehndiCouple,
-  sangeet: assets.sangeetCouple,
-  wedding: assets.weddingCouple,
+  haldi:     assets.haldiCouple,
+  mehndi:    assets.mehndiCouple,
+  sangeet:   assets.sangeetCouple,
+  wedding:   assets.weddingCouple,
+  reception: assets.weddingCouple,
 };
 
 export function WardrobeSection({ wardrobe, headerText }) {

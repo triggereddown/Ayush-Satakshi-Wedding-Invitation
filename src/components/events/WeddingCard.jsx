@@ -4,6 +4,7 @@ import { assets } from '../../config/assets';
 import { ChromaKeyImage } from '../shared/ChromaKeyImage';
 
 export function WeddingCard({ event }) {
+  if (!event) return null;
   return (
     <section
       className="event-card event-card-wedding"

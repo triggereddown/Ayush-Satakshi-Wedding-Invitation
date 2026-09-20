@@ -12,16 +12,18 @@ import { HaldiCard }            from './components/events/HaldiCard';
 import { MehndiCard }           from './components/events/MehndiCard';
 import { SangeetCard }          from './components/events/SangeetCard';
 import { WeddingCard }          from './components/events/WeddingCard';
+import { ReceptionCard }        from './components/events/ReceptionCard';
 import { WardrobeSection }      from './components/wardrobe/WardrobeSection';
 import { VenueSection }         from './components/venue/VenueSection';
 import { ClosingSection }       from './components/closing/ClosingSection';
 
-const { events, wardrobe } = weddingConfig;
+const { events = [], wardrobe } = weddingConfig;
 
-const haldiEvent   = events.find((e) => e.id === 'haldi');
-const mehndiEvent  = events.find((e) => e.id === 'mehndi');
-const sangeetEvent = events.find((e) => e.id === 'sangeet');
-const weddingEvent = events.find((e) => e.id === 'wedding');
+const haldiEvent     = events.find((e) => e.id?.toLowerCase() === 'haldi');
+const mehndiEvent    = events.find((e) => e.id?.toLowerCase() === 'mehndi');
+const sangeetEvent   = events.find((e) => e.id?.toLowerCase() === 'sangeet');
+const weddingEvent   = events.find((e) => e.id?.toLowerCase() === 'wedding');
+const receptionEvent = events.find((e) => e.id?.toLowerCase() === 'reception');
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
@@ -139,16 +141,19 @@ function App() {
         <EventsHeaderSection config={weddingConfig} />
 
         {/* 6. Haldi Ceremony */}
-        <HaldiCard event={haldiEvent} />
+        {haldiEvent && <HaldiCard event={haldiEvent} />}
 
         {/* 7. Mehndi Ceremony */}
-        <MehndiCard event={mehndiEvent} />
+        {mehndiEvent && <MehndiCard event={mehndiEvent} />}
 
         {/* 8. Sangeet Celebration */}
-        <SangeetCard event={sangeetEvent} />
+        {sangeetEvent && <SangeetCard event={sangeetEvent} />}
 
         {/* 9. Wedding Ceremony */}
-        <WeddingCard event={weddingEvent} />
+        {weddingEvent && <WeddingCard event={weddingEvent} />}
+
+        {/* 10. Reception Ceremony */}
+        {receptionEvent && <ReceptionCard event={receptionEvent} />}
 
         {/* 10. Wardrobe Guide */}
         <WardrobeSection wardrobe={wardrobe} headerText={weddingConfig.wardrobeHeader} />

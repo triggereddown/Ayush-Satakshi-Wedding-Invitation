@@ -46,6 +46,14 @@ export function FloatingElements({ theme = 'default', count = 8 }) {
       { el: '🌺', top: '70%', left: '5%',  delay: '1.8s', size: '1rem'   },
       { el: '✿',  top: '82%', right: '8%', delay: '3s',   size: '0.9rem', color: '#c89a42' },
     ],
+    reception: [
+      { el: '✨', top: '10%', left: '7%',  delay: '0s',   size: '1.2rem', color: '#c89a42' },
+      { el: '🥂', top: '20%', right: '8%', delay: '1.2s', size: '1rem'   },
+      { el: '✦',  top: '40%', left: '4%',  delay: '2s',   size: '1rem',  color: '#e0c068' },
+      { el: '💫', top: '58%', right: '6%', delay: '0.6s', size: '1.1rem' },
+      { el: '⭐', top: '72%', left: '6%',  delay: '1.6s', size: '0.9rem', color: '#c89a42' },
+      { el: '🌸', top: '85%', right: '7%', delay: '2.8s', size: '1rem'   },
+    ],
   };
 
   const items = configs[theme] || configs.default;

@@ -61,7 +61,7 @@ export const weddingConfig = {
       time: '10:00 AM',
     },
     {
-      id: 'Wedding',
+      id: 'wedding',
       title: 'WEDDING\nCEREMONY',
       hashtag: '#TieTheKnotNov26',
       joinText: 'PLEASE JOIN US FOR AN EVENING',

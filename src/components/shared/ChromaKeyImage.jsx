@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 
+const chromaCache = new Map();
+
 /**
  * ChromaKeyImage
- * Dynamically removes solid background colors using HTML5 Canvas.
+ * Dynamically removes solid background colors using HTML5 Canvas with in-memory caching.
  * Supports Green-Screen (#00FF00), Magenta-Screen (#FF00FF), or RGB tolerance keying.
  * Preserves black hair, skin tones, white clothes, and jewelry.
  */
@@ -15,11 +17,17 @@ export function ChromaKeyImage({
   tolerance = 60,
   ...props
 }) {
-  const [processedSrc, setProcessedSrc] = useState(src);
+  const cacheKey = `${src}_${mode}_${tolerance}_${keyColor.r}_${keyColor.g}_${keyColor.b}`;
+  const [processedSrc, setProcessedSrc] = useState(() => chromaCache.get(cacheKey) || src);
 
   useEffect(() => {
     let active = true;
     if (!src) return;
+
+    if (chromaCache.has(cacheKey)) {
+      setProcessedSrc(chromaCache.get(cacheKey));
+      return;
+    }
 
     const img = new Image();
     img.crossOrigin = "anonymous";
@@ -71,8 +79,10 @@ export function ChromaKeyImage({
         }
 
         ctx.putImageData(imgData, 0, 0);
+        const dataUrl = canvas.toDataURL();
+        chromaCache.set(cacheKey, dataUrl);
         if (active) {
-          setProcessedSrc(canvas.toDataURL());
+          setProcessedSrc(dataUrl);
         }
       } catch (err) {
         console.warn("ChromaKey error:", err);

@@ -46,26 +46,9 @@ function App() {
     };
     document.addEventListener('keydown', handleKeyDown);
 
-    // Debugger trap loop
-    const trap = setInterval(() => {
-      (function() {
-        try {
-          (function check(i) {
-            if (("" + i / i).length !== 1 || i % 20 === 0) {
-              (function() {}).constructor("debugger")();
-            } else {
-              debugger;
-            }
-            check(++i);
-          })(0);
-        } catch (e) {}
-      })();
-    }, 200);
-
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
-      clearInterval(trap);
     };
   }, []);
 

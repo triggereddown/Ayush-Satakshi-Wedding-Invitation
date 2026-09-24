@@ -128,6 +128,7 @@ export function SaveTheDateSection({ config }) {
             height={100}
             className={`scratch-canvas ${isRevealed ? 'is-revealed' : ''}`}
             aria-label="Interactive scratch card"
+            style={{ touchAction: 'none' }}
           />
         </div>
       </FadeIn>

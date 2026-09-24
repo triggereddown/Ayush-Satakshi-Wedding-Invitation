@@ -2,7 +2,7 @@
  * FloatingElements – scattered emoji petals, flowers, leaves
  * that drift gently over each section (decoration only).
  */
-export function FloatingElements({ theme = 'default', count = 8 }) {
+export function FloatingElements({ theme = 'default', count = 3 }) {
   const configs = {
     default: [
       { el: '🌸', top: '8%',  left: '7%',  delay: '0s',   size: '1.1rem' },

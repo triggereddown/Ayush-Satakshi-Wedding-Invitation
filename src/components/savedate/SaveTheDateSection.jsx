@@ -131,14 +131,6 @@ export function SaveTheDateSection({ config }) {
           />
         </div>
       </FadeIn>
-
-      {isRevealed && (
-        <FadeIn delay={0}>
-          <p className="scratch-success-note">
-            🎉 {config.saveTheDate.dates} &nbsp;·&nbsp; {config.venue.city}
-          </p>
-        </FadeIn>
-      )}
     </section>
   );
 }

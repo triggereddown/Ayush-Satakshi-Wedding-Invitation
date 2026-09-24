@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FadeIn } from '../shared/FadeIn';
 import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
-import { playShehnaiFlourish } from '../../utils/audioSynth';
 import { ChromaKeyImage } from '../shared/ChromaKeyImage';
 
 export function NamesSection({ config }) {
@@ -13,7 +12,6 @@ export function NamesSection({ config }) {
   const handleBrideClick = () => {
     if (drishtiRevealed) return;
     setDrishtiRevealed(true);
-    playShehnaiFlourish();
   };
 
   const handleRomanticClick = (e) => {

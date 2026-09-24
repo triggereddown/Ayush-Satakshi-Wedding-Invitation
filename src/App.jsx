@@ -9,20 +9,17 @@ import { NamesSection }         from './components/names/NamesSection';
 import { SaveTheDateSection }   from './components/savedate/SaveTheDateSection';
 import { EventsHeaderSection }  from './components/events/EventsHeaderSection';
 import { HaldiCard }            from './components/events/HaldiCard';
-import { MehndiCard }           from './components/events/MehndiCard';
-import { SangeetCard }          from './components/events/SangeetCard';
 import { WeddingCard }          from './components/events/WeddingCard';
+import { SangeetCard }          from './components/events/SangeetCard';
 import { ReceptionCard }        from './components/events/ReceptionCard';
-import { WardrobeSection }      from './components/wardrobe/WardrobeSection';
 import { VenueSection }         from './components/venue/VenueSection';
 import { ClosingSection }       from './components/closing/ClosingSection';
 
-const { events = [], wardrobe } = weddingConfig;
+const { events = [] } = weddingConfig;
 
 const haldiEvent     = events.find((e) => e.id?.toLowerCase() === 'haldi');
-const mehndiEvent    = events.find((e) => e.id?.toLowerCase() === 'mehndi');
-const sangeetEvent   = events.find((e) => e.id?.toLowerCase() === 'sangeet');
 const weddingEvent   = events.find((e) => e.id?.toLowerCase() === 'wedding');
+const sangeetEvent   = events.find((e) => e.id?.toLowerCase() === 'sangeet');
 const receptionEvent = events.find((e) => e.id?.toLowerCase() === 'reception');
 
 function App() {
@@ -72,9 +69,11 @@ function App() {
     };
   }, []);
 
-  // Audio elements ref control
+  // Audio elements ref control and body scroll locking
   useEffect(() => {
     if (isOpened) {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       const audio = document.getElementById('bg-audio');
       if (audio) {
         audio.play().then(() => {
@@ -83,7 +82,15 @@ function App() {
           console.log('Audio autoplay blocked by browser policy:', err);
         });
       }
+    } else {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
   }, [isOpened]);
 
   const handleOpen = () => {
@@ -140,28 +147,22 @@ function App() {
         {/* 5. Events Schedule header */}
         <EventsHeaderSection config={weddingConfig} />
 
-        {/* 6. Haldi Ceremony */}
+        {/* 6. Haldi Ceremony - 21st Nov Morning */}
         {haldiEvent && <HaldiCard event={haldiEvent} />}
 
-        {/* 7. Mehndi Ceremony */}
-        {mehndiEvent && <MehndiCard event={mehndiEvent} />}
-
-        {/* 8. Sangeet Celebration */}
-        {sangeetEvent && <SangeetCard event={sangeetEvent} />}
-
-        {/* 9. Wedding Ceremony */}
+        {/* 7. Wedding Ceremony - 21st Nov Evening */}
         {weddingEvent && <WeddingCard event={weddingEvent} />}
 
-        {/* 10. Reception Ceremony */}
+        {/* 8. Sangeet Celebration - 22nd Nov Evening */}
+        {sangeetEvent && <SangeetCard event={sangeetEvent} />}
+
+        {/* 9. Reception Ceremony - 23rd Nov */}
         {receptionEvent && <ReceptionCard event={receptionEvent} />}
 
-        {/* 10. Wardrobe Guide */}
-        <WardrobeSection wardrobe={wardrobe} headerText={weddingConfig.wardrobeHeader} />
-
-        {/* 11. Venue */}
+        {/* 10. Venue */}
         <VenueSection config={weddingConfig} />
 
-        {/* 12. Closing */}
+        {/* 11. Closing */}
         <ClosingSection config={weddingConfig} />
       </div>
     </div>

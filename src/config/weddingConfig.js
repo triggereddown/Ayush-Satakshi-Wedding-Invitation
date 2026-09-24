@@ -4,7 +4,7 @@ export const weddingConfig = {
   // ─── Main Banner & Metadata ──────────────────────────────
   blessingHeader: '|| ॐ श्री गणेशाय नमः ||',
   bengaliBlessing: 'শুভ বিবাহ',
-  hashtag: '#AyushSatakshi',
+  hashtag: '#AyushWedsSatakshi',
 
   // ─── Couple Info ──────────────────────────────────────────
   groom: {
@@ -13,15 +13,15 @@ export const weddingConfig = {
     father: 'Mr. Piyush Mukherjee',
     mother: 'Mrs. Jhuma Mukherjee',
     grandfather: 'Late Mr.P.N. Mukherjee',
-    grandmother: 'Mrs. Bithi Mukherjee',
+    grandmother: 'Late Mrs. Bithi Mukherjee',
   },
   bride: {
     firstName: 'Satakshi',
     lastName: 'Bhattacharjee',
     father: 'Mr. Biplab Bhattacharjee',
     mother: 'Mrs. Chinmoyee Bhattacharjee',
-    grandfather: 'Mr. Shovakant Pathak',
-    grandmother: 'Late Mrs. Prabha Devi',
+    grandfather: 'Late Mr. Ramendu Kishore Bhattacharjee',
+    grandmother: 'Late Mrs. Bijaya Bhattacharjee',
   },
 
   // ─── Save The Date Section ────────────────────────────────
@@ -35,7 +35,7 @@ export const weddingConfig = {
   // ─── Venue Details ────────────────────────────────────────
   venue: {
     label: 'WHERE WE CELEBRATE',
-    name: 'RA VISTA',
+    name: 'Hotel RA Vista',
     city: 'Kolkata',
     fullAddress: 'Dum Dum,Near International Airport Kolkata',
     tagline: 'Where our forever begins.',
@@ -58,7 +58,7 @@ export const weddingConfig = {
       hashtag: '#SunMeetsSky',
       joinText: 'PLEASE JOIN US FOR A MORNING',
       tagline: 'Filled with love, laughter and turmeric.',
-      date: '20th November 2026',
+      date: '21st November 2026',
       time: '10:00 AM',
     },
     {
@@ -67,11 +67,11 @@ export const weddingConfig = {
       hashtag: '#TieTheKnotNov26',
       joinText: 'PLEASE JOIN US FOR AN EVENING',
       tagline: 'Dancing Under the stars, bound forever by Love',
-      date: '21st NOVEMBER 2026',
+      date: '21st November 2026',
       rituals: [
         { name: 'Baraat', time: '6:00 PM' },
         { name: 'Mala Bodol', time: '7:00 PM' },
-        { name: 'Rituals', time: '8:00 PM' },
+        { name: 'Sindoor Daan', time: '8:00 PM' },
       ],
     },
     {
@@ -80,7 +80,7 @@ export const weddingConfig = {
       hashtag: '#YeShaamShandaar',
       joinText: 'PLEASE JOIN US FOR AN EVENING',
       tagline: 'Where melodies meet memories and hearts dance with joy.',
-      date: '22nd NOVEMBER 2026',
+      date: '22nd November 2026',
       time: '7:00 PM',
     },
     {
@@ -90,35 +90,6 @@ export const weddingConfig = {
       joinText: 'PLEASE JOIN US FOR A GRAND CELEBRATION',
       tagline: "Here's to Love,Laughter and a Night to remember.",
       date: '23rd November 2026',
-    },
-  ],
-
-  // ─── Wardrobe Guide ───────────────────────────────────────
-  wardrobeHeader: 'WARDROBE GUIDE',
-  wardrobe: [
-    {
-      id: 'haldi',
-      eventLabel: 'HALDI',
-      themeName: 'Sunshine Shades',
-      description: 'Think comfortable festive wear in cheerful shades of yellow.',
-    },
-    {
-      id: 'wedding',
-      eventLabel: 'WARDROBE',
-      themeName: 'Royal Wedding Hues',
-      description: 'Think timeless sarees, lehengas, sherwanis, and bandhgalas in regal tones.',
-    },
-    {
-      id: 'sangeet',
-      eventLabel: 'SANGEET',
-      themeName: 'Starlit Glam',
-      description: 'Think glittery pastels and sophisticated evening wear that sparkles under the lights.',
-    },
-    {
-      id: 'reception',
-      eventLabel: 'RECEPTION',
-      themeName: 'The Grand Soiree',
-      description: 'Think sharp tuxedos, sleek dark suits, and high-fashion ethnic statements—deep jewel tones, regal silhouettes, and effortless sophistication tailored for a night of grand celebrations.',
     },
   ],
 
@@ -134,7 +105,7 @@ export const weddingConfig = {
     },
     inviteText:
       'We request the honor of your gracious presence\non the auspicious occasion of the wedding celebration of',
-    dates: '5th – 6th July 2026',
+    dates: '21st to 23rd November 2026',
     coverTitle: 'YOU\'RE\nINVITED',
     coverSubtitle: 'Tap the envelope to open our invitation',
     coverTapHint: '✦ Tap to open ✦',

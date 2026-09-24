@@ -1,22 +1,7 @@
-import { useState } from 'react';
 import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
-import { playShankhaSound } from '../../utils/audioSynth';
-import { ChromaKeyImage } from '../shared/ChromaKeyImage';
 
 export function CoverSection({ config, isOpened, onOpen }) {
-  const [isBlowing, setIsBlowing] = useState(false);
-
-  const handleShankhaClick = (e) => {
-    e.stopPropagation();
-    if (isBlowing) return;
-    setIsBlowing(true);
-    playShankhaSound();
-    setTimeout(() => {
-      setIsBlowing(false);
-    }, 4000);
-  };
-
   return (
     <section className={`cover-section ${isOpened ? 'is-opened' : ''}`} id="cover-section">
       <FloatingElements theme="default" />
@@ -92,36 +77,6 @@ export function CoverSection({ config, isOpened, onOpen }) {
               style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 6px 12px rgba(109,31,36,0.35))' }}
             />
           </span>
-        </button>
-      </div>
-
-      {/* Prominent Auspicious Shankha Blow Banner */}
-      <div className="cover-shankha-card-container">
-        <button
-          type="button"
-          className={`shankha-luxury-btn ${isBlowing ? 'is-blowing' : ''}`}
-          onClick={handleShankhaClick}
-          aria-label="Tap to blow auspicious Shankha sound"
-        >
-          <div className="shankha-icon-glowing-ring">
-            <ChromaKeyImage
-              src={assets.elements.shankha}
-              alt="Sacred Conch Shell"
-              className="shankha-icon-hero"
-              tolerance={35}
-            />
-            {isBlowing && (
-              <>
-                <span className="shankha-ring ring-1"></span>
-                <span className="shankha-ring ring-2"></span>
-                <span className="shankha-ring ring-3"></span>
-              </>
-            )}
-          </div>
-          <div className="shankha-text-block">
-            <span className="shankha-hero-title">🪈 TAP TO BLOW SACRED SHANKH 🪈</span>
-            <span className="shankha-hero-sub">✦ Click to play auspicious conch sound ✦</span>
-          </div>
         </button>
       </div>
 

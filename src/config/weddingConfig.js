@@ -106,7 +106,7 @@ export const weddingConfig = {
     inviteText:
       'We request the honor of your gracious presence\non the auspicious occasion of the wedding celebration of',
     dates: '21st to 23rd November 2026',
-    coverTitle: 'WEDDING\nINVITATION',
+    coverTitle: 'Wedding\nInvitation',
     coverSubtitle: 'Ayush & Satakshi',
     coverTapHint: '✦ TAP SEAL TO OPEN ✦',
     closingWithLove: 'WITH LOVE',

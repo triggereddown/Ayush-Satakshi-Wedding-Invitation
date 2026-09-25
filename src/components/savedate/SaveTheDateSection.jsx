@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { FadeIn } from '../shared/FadeIn';
 import { FloatingElements } from '../shared/FloatingElements';
+import { fireRoyalConfetti } from '../../utils/confetti';
 
 export function SaveTheDateSection({ config }) {
   const canvasRef = useRef(null);
+  const cardContainerRef = useRef(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const isDrawingRef = useRef(false);
+  const hasFiredRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -14,7 +17,7 @@ export function SaveTheDateSection({ config }) {
     const width = canvas.width;
     const height = canvas.height;
 
-    // Fill foil overlay
+    // Fill foil overlay with luxury royal gradient
     const gradient = ctx.createLinearGradient(0, 0, width, height);
     gradient.addColorStop(0, '#8B1A2A');
     gradient.addColorStop(0.5, '#6D1F24');
@@ -97,6 +100,17 @@ export function SaveTheDateSection({ config }) {
     };
   }, []);
 
+  // Trigger celebratory royal confetti upon reveal
+  useEffect(() => {
+    if (isRevealed && !hasFiredRef.current) {
+      hasFiredRef.current = true;
+      const rect = cardContainerRef.current
+        ? cardContainerRef.current.getBoundingClientRect()
+        : null;
+      fireRoyalConfetti(rect);
+    }
+  }, [isRevealed]);
+
   return (
     <section className="save-date-section" id="save-date-section">
       <FloatingElements theme="default" count={5} />
@@ -117,7 +131,10 @@ export function SaveTheDateSection({ config }) {
 
       {/* Real HTML5 Canvas Scratch Card */}
       <FadeIn delay={240}>
-        <div className="scratch-card-container">
+        <div
+          ref={cardContainerRef}
+          className={`scratch-card-container ${isRevealed ? 'is-revealed' : ''}`}
+        >
           <div className="scratch-underlayer">
             <span className="scratch-revealed-text">{config.saveTheDate.dateText}</span>
           </div>
@@ -131,6 +148,12 @@ export function SaveTheDateSection({ config }) {
             style={{ touchAction: 'none' }}
           />
         </div>
+
+        {isRevealed && (
+          <p className="scratch-success-note" style={{ marginTop: 16 }}>
+            ✨ Mark your calendars for our auspicious union! ✨
+          </p>
+        )}
       </FadeIn>
     </section>
   );

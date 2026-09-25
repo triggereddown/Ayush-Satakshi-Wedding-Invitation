@@ -50,60 +50,21 @@ export function BlessingSection({ config }) {
       </FadeIn>
 
       <FadeIn delay={320}>
-        <p className="name-script" style={{ marginTop: 20 }}>
-          {groom.firstName}
-        </p>
-        <p
-          className="blessing-relation-tag"
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            fontSize: '1rem',
-            color: 'var(--muted)',
-            letterSpacing: '0.04em',
-            margin: '2px 0 12px',
-          }}
-        >
-          (Only Son)
-        </p>
-        <p className="weds-text">weds</p>
-        <p className="name-script">{bride.firstName}</p>
-        <p
-          className="blessing-relation-tag"
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            fontSize: '1rem',
-            color: 'var(--muted)',
-            letterSpacing: '0.04em',
-            margin: '2px 0 0',
-          }}
-        >
-          (Only Daughter)
-        </p>
-      </FadeIn>
-
-      <FadeIn delay={400}>
-        <div style={{ marginTop: 24 }}>
-          <p className="names-parent">
-            S/o {groom.father} &amp; {groom.mother}
+        <div style={{ marginTop: 24, marginBottom: 12 }}>
+          <p className="name-script">
+            {groom.firstName}
           </p>
-          <p className="names-grandparent">
-            Grandson of {groom.grandfather} &amp; {groom.grandmother}
+          <p
+            className="weds-text"
+            style={{
+              margin: '2px 0',
+              fontSize: 'clamp(1.8rem, 6vw, 2.4rem)',
+              color: 'var(--gold-deep)',
+            }}
+          >
+            &amp;
           </p>
-        </div>
-      </FadeIn>
-
-      <div className="names-divider" style={{ margin: '24px 0' }} />
-
-      <FadeIn delay={480}>
-        <div>
-          <p className="names-parent">
-            D/o {bride.father} &amp; {bride.mother}
-          </p>
-          <p className="names-grandparent">
-            Granddaughter of {bride.grandfather} &amp; {bride.grandmother}
-          </p>
+          <p className="name-script">{bride.firstName}</p>
         </div>
       </FadeIn>
     </section>

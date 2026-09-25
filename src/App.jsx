@@ -160,6 +160,7 @@ function App() {
         <ClosingSection config={weddingConfig} />
       </div>
     </div>
+    </>
   );
 }
 

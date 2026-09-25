@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FadeIn } from '../shared/FadeIn';
 import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
@@ -8,6 +8,8 @@ export function NamesSection({ config }) {
   const { groom, bride } = config;
   const [drishtiRevealed, setDrishtiRevealed] = useState(false);
   const [hearts, setHearts] = useState([]);
+  const coupleContainerRef = useRef(null);
+  const lastTapTimeRef = useRef(0);
 
   const handleBrideClick = () => {
     if (drishtiRevealed) return;
@@ -15,21 +17,45 @@ export function NamesSection({ config }) {
   };
 
   const handleRomanticClick = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const clickY = e.clientY - rect.top;
+    // Avoid rapid duplicate fire from synthesized click after touch
+    const now = Date.now();
+    if (e.type === 'click' && now - lastTapTimeRef.current < 250) {
+      return;
+    }
+    if (e.type === 'touchstart') {
+      lastTapTimeRef.current = now;
+    }
 
-    // Spawn 6 floating hearts from the clicked location
+    const container = coupleContainerRef.current;
+    if (!container) return;
+    const rect = container.getBoundingClientRect();
+
+    let clickX = rect.width / 2;
+    let clickY = rect.height * 0.45;
+
+    const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : null);
+    const clientY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : null);
+
+    if (clientX != null && clientY != null) {
+      const relX = clientX - rect.left;
+      const relY = clientY - rect.top;
+      if (relX >= 0 && relX <= rect.width && relY >= 0 && relY <= rect.height) {
+        clickX = relX;
+        clickY = relY;
+      }
+    }
+
+    // Spawn 6 floating hearts from tapped location
     const newHearts = Array.from({ length: 6 }).map((_, i) => ({
-      id: Date.now() + i,
+      id: Math.random() + Date.now() + i,
       x: clickX,
       y: clickY,
-      size: 14 + Math.random() * 14,
-      delay: i * 0.12,
-      tx: (Math.random() - 0.5) * 120, // drift left or right
+      size: 16 + Math.random() * 14,
+      delay: i * 0.1,
+      tx: (Math.random() - 0.5) * 110,
     }));
 
-    setHearts((prev) => [...prev, ...newHearts]);
+    setHearts((prev) => [...prev.slice(-24), ...newHearts]);
   };
 
   // Clean up hearts after they float away
@@ -66,14 +92,20 @@ export function NamesSection({ config }) {
       <FadeIn delay={50}>
         <div className="romantic-couple-block">
           <div 
+            ref={coupleContainerRef}
             className="romantic-couple-container" 
             onClick={handleRomanticClick}
+            onTouchStart={handleRomanticClick}
+            role="button"
+            tabIndex={-1}
+            aria-label="Tap to produce hearts"
           >
             <ChromaKeyImage
               src={assets.elements.romanticCouple}
               alt="Traditional Bengali Romantic Couple Illustration"
               className="names-couple-illustration romantic-couple-img"
               tolerance={45}
+              draggable="false"
             />
             {hearts.map((heart) => (
               <span
@@ -91,7 +123,13 @@ export function NamesSection({ config }) {
               </span>
             ))}
           </div>
-          <div className="romantic-hint-badge" onClick={handleRomanticClick}>
+          <div 
+            className="romantic-hint-badge" 
+            onClick={handleRomanticClick}
+            onTouchStart={handleRomanticClick}
+            role="button"
+            tabIndex={-1}
+          >
             ✦ TAP FOR LOVE ✦
           </div>
         </div>

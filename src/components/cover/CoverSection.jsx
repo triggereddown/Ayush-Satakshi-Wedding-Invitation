@@ -1,9 +1,32 @@
+import { useState } from 'react';
 import { FloatingElements } from '../shared/FloatingElements';
 import { assets } from '../../config/assets';
 
 export function CoverSection({ config, isOpened, onOpen }) {
+  const [isOpening, setIsOpening] = useState(false);
+  const [isEntering, setIsEntering] = useState(false);
+
+  const handleCardClick = () => {
+    if (isOpening || isOpened) return;
+    setIsOpening(true);
+
+    // Flaps unfold smoothly, then seamlessly transition straight into landing page
+    setTimeout(() => {
+      setIsEntering(true);
+    }, 900);
+
+    setTimeout(() => {
+      onOpen();
+    }, 1300);
+  };
+
+  const isCardOpened = isOpening || isOpened;
+
   return (
-    <section className={`cover-section ${isOpened ? 'is-opened' : ''}`} id="cover-section">
+    <section
+      className={`cover-section ${isOpening ? 'is-opening' : ''} ${isEntering ? 'is-entering' : ''} ${isOpened ? 'is-opened' : ''}`}
+      id="cover-section"
+    >
       <FloatingElements theme="default" />
 
       {/* Bengali Alpana & Toran Framing */}
@@ -30,71 +53,90 @@ export function CoverSection({ config, isOpened, onOpen }) {
         loading="eager"
       />
 
-      {/* Ganesh Motif */}
-      <div className="ganesh-wrapper">
-        <img
-          src={assets.ganesh}
-          alt="Lord Ganesha"
-          className="cover-ganesh"
-          loading="eager"
-        />
-      </div>
+      {/* Main Centered Content */}
+      <div className="cover-main-center">
+        {/* Title above card */}
+        <div className="cover-header-text">
+          <p className="cover-shubho-bengali">|| শুভ বিবাহ ||</p>
+          <h1 className="cover-you-re-invited" style={{ whiteSpace: 'pre-line' }}>
+            {config.invitation.coverTitle}
+          </h1>
+          <p className="cover-subtitle">
+            {config.invitation.coverSubtitle}
+          </p>
+        </div>
 
-      {/* Envelope Card */}
-      <div className="envelope-scene">
-        <button
-          type="button"
-          id="cover-envelope-btn"
-          className={`bi-fold-container ${isOpened ? 'is-opened' : ''}`}
-          onClick={onOpen}
-          aria-label={isOpened ? 'Invitation opened' : 'Tap to open the invitation'}
-        >
-          {/* Left Flap */}
-          <div className="bi-fold-flap flap-left">
-            <img
-              className="envelope-img"
-              src={assets.opening.closedCard}
-              alt=""
-              loading="eager"
-            />
-          </div>
+        {/* Envelope Card */}
+        <div className="envelope-scene">
+          <button
+            type="button"
+            id="cover-envelope-btn"
+            className={`bi-fold-container ${isCardOpened ? 'is-opened' : ''}`}
+            onClick={handleCardClick}
+            aria-label={isOpened ? 'Invitation opened' : 'Tap to open the invitation'}
+          >
+            {/* Inside Golden Parchment revealed as flaps open */}
+            <div className="bi-fold-inside" aria-hidden="true">
+              <div className="inside-parchment">
+                <img
+                  src={assets.ganesh}
+                  alt=""
+                  className="inside-ganesh-icon"
+                />
+                <p className="inside-shubho">শুভ বিবাহ</p>
+                <div className="inside-divider-line" />
+                <p className="inside-invite-txt">Wedding Celebration</p>
+              </div>
+              <div className="inside-golden-glow" />
+            </div>
 
-          {/* Right Flap */}
-          <div className="bi-fold-flap flap-right">
-            <img
-              className="envelope-img"
-              src={assets.opening.closedCard}
-              alt=""
-              loading="eager"
-            />
-          </div>
+            {/* Left Flap */}
+            <div className="bi-fold-flap flap-left">
+              <img
+                className="flap-inner-img flap-img-left"
+                src={assets.opening.closedCard}
+                alt=""
+                loading="eager"
+              />
+            </div>
 
-          {/* Wax seal */}
-          <span className="wax-seal" aria-hidden="true" style={{ background: 'transparent', boxShadow: 'none' }}>
-            <img
-              src={assets.logo}
-              alt="Wedding Logo"
-              style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 6px 12px rgba(109,31,36,0.35))' }}
-            />
-          </span>
-        </button>
-      </div>
+            {/* Right Flap */}
+            <div className="bi-fold-flap flap-right">
+              <img
+                className="flap-inner-img flap-img-right"
+                src={assets.opening.closedCard}
+                alt=""
+                loading="eager"
+              />
+            </div>
 
-      {/* Text Configured Centralized */}
-      <div className="cover-bottom">
-        <h1 className="cover-you-re-invited" style={{ whiteSpace: 'pre-line' }}>
-          {config.invitation.coverTitle}
-        </h1>
-        <p className="cover-subtitle">
-          {config.invitation.coverSubtitle}
-        </p>
+            {/* High-visibility Wax Seal with "OPEN" badge */}
+            <span className="wax-seal" aria-hidden="true">
+              <div className="seal-outer-ring">
+                <div className="seal-inner-disc">
+                  <img
+                    src={assets.logo}
+                    alt="Wedding Monogram"
+                    className="seal-monogram-img"
+                  />
+                  <div className="seal-open-badge">
+                    <span>OPEN</span>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </button>
+        </div>
+
+        {/* Tap hint below card */}
         {!isOpened && (
-          <span className="cover-tap-hint" aria-live="polite">
-            {config.invitation.coverTapHint}
-          </span>
+          <div className="cover-hint-wrapper" onClick={handleCardClick}>
+            <span className="cover-tap-hint" aria-live="polite">
+              {config.invitation.coverTapHint}
+            </span>
+          </div>
         )}
       </div>
     </section>
   );
 }
-

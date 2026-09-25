@@ -293,34 +293,39 @@ button, input, textarea, select {
    ============================================================ */
 .cover-section {
   position: relative;
-  min-height: 100svh;
-  background: 
-    url('/generated/bengali_wedding_bg.png') no-repeat center center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: url('/generated/bengali_wedding_bg.png') no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px 24px 56px;
+  padding: 24px 20px;
   overflow: hidden;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease;
+  will-change: transform, opacity;
 }
 
-.cover-ganesh {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 72px;
-  z-index: 3;
-  filter: drop-shadow(0 4px 12px rgba(200,154,66,0.3));
+.cover-section.is-entering {
+  transform: scale(1.06);
+  opacity: 0;
+  pointer-events: none;
 }
 
+.cover-section.is-opened {
+  display: none !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Top decorative elements */
 .bengali-top-toran {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  max-height: 80px;
+  max-height: 75px;
   object-fit: contain;
   z-index: 3;
   pointer-events: none;
@@ -328,105 +333,225 @@ button, input, textarea, select {
 
 .cover-flower-tl {
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: -20px;
-  width: 130px;
+  width: 120px;
   opacity: 0.85;
   z-index: 2;
   animation: drift 9s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .cover-flower-tr {
   position: absolute;
-  top: 15px;
+  top: 12px;
   right: -20px;
-  width: 140px;
+  width: 130px;
   opacity: 0.8;
   z-index: 2;
   animation: drift 11s ease-in-out infinite -3s;
+  pointer-events: none;
 }
 
-.cover-flower-bl {
-  position: absolute;
-  bottom: 60px;
-  left: -25px;
-  width: 180px;
-  opacity: 0.75;
-  z-index: 1;
-  animation: drift 8s ease-in-out infinite -5s;
+/* Main Centered Content Container */
+.cover-main-center {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  margin: auto 0;
+  padding-top: 40px;
+  text-align: center;
 }
 
-.cover-flower-br {
-  position: absolute;
-  bottom: 80px;
-  right: -15px;
-  width: 140px;
-  opacity: 0.8;
-  z-index: 1;
-  animation: drift 10s ease-in-out infinite -1.5s;
+.cover-shubho-bengali {
+  font-family: var(--font-bengali);
+  font-size: 1.15rem;
+  color: var(--wine);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33%       { transform: translate(4px, -12px) rotate(1.5deg); }
-  66%       { transform: translate(-4px, -6px) rotate(-1deg); }
+/* Cover Header Text */
+.cover-header-text {
+  margin-bottom: 14px;
 }
 
-/* --- Envelope card --- */
+.cover-you-re-invited {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 6.5vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--wine);
+  line-height: 1.15;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.cover-subtitle {
+  font-family: var(--font-script);
+  font-size: clamp(2.1rem, 8vw, 2.7rem);
+  font-weight: 700;
+  color: #6a1520;
+  margin-top: 2px;
+  line-height: 1.15;
+  word-break: keep-all;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 250, 240, 0.9);
+}
+
+/* --- Envelope Card & Realistic 3D Opening --- */
 .envelope-scene {
   position: relative;
   z-index: 4;
-  width: min(100%, 320px);
-  perspective: 1600px;
+  width: min(100%, 300px);
+  perspective: 1800px;
   cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.envelope-scene:hover {
+  transform: translateY(-3px);
 }
 
 .bi-fold-container {
   position: relative;
   width: 100%;
   aspect-ratio: 0.78;
+  border-radius: 18px;
   border: 0;
   background: transparent;
   padding: 0;
   cursor: pointer;
   transform-style: preserve-3d;
   outline: none;
+  box-shadow: 0 16px 48px rgba(58, 34, 24, 0.22);
 }
 
 .bi-fold-container:focus-visible {
-  outline: 3px solid rgba(158,55,43,0.5);
-  outline-offset: 12px;
+  outline: 3px solid rgba(158, 55, 43, 0.5);
+  outline-offset: 10px;
 }
 
-.bi-fold-flap {
+/* Inside Card revealed on fold */
+.bi-fold-inside {
   position: absolute;
   inset: 0;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  background: linear-gradient(145deg, #fffdf8, #f5ebd9);
+  z-index: 1;
+  box-shadow: inset 0 0 28px rgba(200, 154, 66, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inside-parchment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.inside-ganesh-icon {
+  width: 48px;
+  height: auto;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 3px 8px rgba(200, 154, 66, 0.4));
+}
+
+.inside-shubho {
+  font-family: var(--font-bengali);
+  font-size: 1.15rem;
+  color: var(--wine);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.inside-divider-line {
+  width: 44px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 6px 0;
+}
+
+.inside-invite-txt {
+  font-family: var(--font-sc);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.inside-golden-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(232, 200, 120, 0.35) 0%, transparent 75%);
+  pointer-events: none;
+}
+
+/* Left & Right Flaps */
+.bi-fold-flap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  overflow: hidden;
   backface-visibility: hidden;
-  transition: transform 1.3s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 1.3s ease;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.4, 1), opacity 1.1s ease;
   will-change: transform, opacity;
   box-sizing: border-box;
+  z-index: 3;
 }
 
 .flap-left {
+  left: 0;
+  border-radius: 18px 0 0 18px;
   transform-origin: left center;
-  clip-path: inset(0 50% 0 0);
+  box-shadow: -4px 0 16px rgba(58, 34, 24, 0.18);
 }
 
 .flap-right {
+  right: 0;
+  border-radius: 0 18px 18px 0;
   transform-origin: right center;
-  clip-path: inset(0 0 0 50%);
+  box-shadow: 4px 0 16px rgba(58, 34, 24, 0.18);
+}
+
+.flap-inner-img {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.flap-img-left {
+  left: 0;
+}
+
+.flap-img-right {
+  right: 0;
 }
 
 .bi-fold-container.is-opened .flap-left {
-  transform: rotateY(-110deg) scale(0.95);
+  transform: rotateY(-130deg);
   opacity: 0;
 }
 
 .bi-fold-container.is-opened .flap-right {
-  transform: rotateY(110deg) scale(0.95);
+  transform: rotateY(130deg);
   opacity: 0;
 }
 
@@ -439,63 +564,106 @@ button, input, textarea, select {
   border-radius: 18px;
 }
 
+/* --- High-Visibility Royal Wax Seal with OPEN Badge --- */
 .wax-seal {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 6;
-  width: 78px;
-  height: 78px;
-  transition: transform 1s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 1s ease;
+  width: 92px;
+  height: 92px;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
   pointer-events: none;
 }
 
 .bi-fold-container.is-opened .wax-seal {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.2);
+  transform: translate(-50%, -50%) scale(0.15);
 }
 
-/* --- Cover bottom text --- */
-.cover-bottom {
+.seal-outer-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #9e1f30 0%, #630c19 75%, #3d050d 100%);
+  border: 3px solid #e8c878;
+  box-shadow: 0 0 0 3px rgba(123, 28, 42, 0.9), 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  z-index: 4;
-  text-align: center;
-  margin-top: 28px;
+  animation: seal-glow-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes seal-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(123, 28, 42, 0.9), 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(232, 200, 120, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(123, 28, 42, 0.9), 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 22px rgba(232, 200, 120, 0.8);
+    transform: scale(1.04);
+  }
+}
+
+.seal-inner-disc {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
 }
 
-.cover-you-re-invited {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 9vw, 2.8rem);
+.seal-monogram-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) brightness(1.2);
+}
+
+.seal-open-badge {
+  background: linear-gradient(135deg, #c89a42, #e8c878);
+  color: #4a0e17;
+  font-family: var(--font-sc);
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--wine);
-  line-height: 1;
+  letter-spacing: 0.18em;
+  padding: 2px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
 }
 
-.cover-subtitle {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--muted);
-  letter-spacing: 0.04em;
+/* --- Tap Hint Wrapper Below Card --- */
+.cover-hint-wrapper {
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cover-hint-wrapper:hover {
+  transform: scale(1.05);
 }
 
 .cover-tap-hint {
-  margin-top: 10px;
+  display: inline-block;
   font-family: var(--font-sc);
-  font-size: 0.65rem;
-  letter-spacing: 0.28em;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--wine);
-  border: 1px solid rgba(200,154,66,0.36);
-  padding: 8px 20px;
+  border: 1.5px solid rgba(200, 154, 66, 0.45);
+  padding: 8px 22px;
   border-radius: 999px;
-  background: rgba(255,251,245,0.75);
+  background: rgba(255, 251, 245, 0.85);
+  box-shadow: 0 4px 14px rgba(58, 34, 24, 0.08);
+  font-weight: 600;
 }
 
 /* ============================================================

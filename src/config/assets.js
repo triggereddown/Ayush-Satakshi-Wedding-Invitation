@@ -1,6 +1,6 @@
 export const assets = {
   opening: {
-    closedCard:       '/generated/bengali_wedding_card_illustration.webp',
+    closedCard:       '/generated/bengali_wedding_card_illustration.png',
     paperBackground:  '/generated/bengali_wedding_bg.webp',
     monogram:         '/generated/wedding_logo.webp',
     toran:            '/generated/marigold_garland_toran_clean.webp',
@@ -16,10 +16,10 @@ export const assets = {
   bengaliGroom:       '/generated/bengaliGroom.png',
   bengaliBride:       '/generated/bengaliBride.png',
   shivParvati:        '/generated/shivParvati.webp',
-  weddingCouple:      '/generated/weddingCouple.webp',
-  haldiCouple:        '/generated/haldiCouple.webp',
+  weddingCouple:      '/generated/weddingCouple.png',
+  haldiCouple:        '/generated/haldiCouple.png',
   mehndiCouple:       '/generated/mehehndiCouple.webp',
-  sangeetCouple:      '/generated/sangeetCouple.webp',
+  sangeetCouple:      '/generated/sangeetCouple.png',
 
   // Backgrounds per event
   backgrounds: {

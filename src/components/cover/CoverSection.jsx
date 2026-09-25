@@ -10,14 +10,14 @@ export function CoverSection({ config, isOpened, onOpen }) {
     if (isOpening || isOpened) return;
     setIsOpening(true);
 
-    // Flaps unfold smoothly, then seamlessly transition straight into landing page
+    // Flaps unfold gracefully and slightly slower, then smoothly glide into landing page
     setTimeout(() => {
       setIsEntering(true);
-    }, 900);
+    }, 1350);
 
     setTimeout(() => {
       onOpen();
-    }, 1300);
+    }, 1850);
   };
 
   const isCardOpened = isOpening || isOpened;

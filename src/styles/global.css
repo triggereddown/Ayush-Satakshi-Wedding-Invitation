@@ -233,7 +233,6 @@ button, input, textarea, select {
   margin: 0 auto;
   background: var(--bg);
   box-shadow: 0 0 80px rgba(58, 34, 24, 0.15);
-  contain: paint;
 }
 
 @media (max-width: 480px) {

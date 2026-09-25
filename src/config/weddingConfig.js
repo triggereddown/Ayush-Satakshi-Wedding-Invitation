@@ -99,7 +99,7 @@ export const weddingConfig = {
     blessing: '|| Om Shree Ganeshaya Namah ||',
     shloka: {
       devanagari:
-        'मङ्गलम् भगवान विष्णुः मङ्गलम् गरुडध्वजः ।\nमङ्गलम् पुण्डरी काक्षः मङ्गलाय तनो हरिः ।।',
+        'মঙ্গলং ভগবান বিষ্ণুঃ মঙ্গলং গরুড়ধ্বজঃ ।\nমঙ্গলং পুণ্ডরীকাক্ষঃ মঙ্গলায় তনো হরিঃ ।।',
       roman:
         'MANGALAM BHAGWAN VISHNU · MANGALAM GARUDADHWAJAH\nMANGALAM PUNDARIKAKSHAH · MANGALAYA TANO HARIH',
     },

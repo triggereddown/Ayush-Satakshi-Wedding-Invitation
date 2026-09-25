@@ -53,8 +53,34 @@ export function BlessingSection({ config }) {
         <p className="name-script" style={{ marginTop: 20 }}>
           {groom.firstName}
         </p>
+        <p
+          className="blessing-relation-tag"
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontStyle: 'italic',
+            fontSize: '1rem',
+            color: 'var(--muted)',
+            letterSpacing: '0.04em',
+            margin: '2px 0 12px',
+          }}
+        >
+          (Only Son)
+        </p>
         <p className="weds-text">weds</p>
         <p className="name-script">{bride.firstName}</p>
+        <p
+          className="blessing-relation-tag"
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontStyle: 'italic',
+            fontSize: '1rem',
+            color: 'var(--muted)',
+            letterSpacing: '0.04em',
+            margin: '2px 0 0',
+          }}
+        >
+          (Only Daughter)
+        </p>
       </FadeIn>
 
       <FadeIn delay={400}>

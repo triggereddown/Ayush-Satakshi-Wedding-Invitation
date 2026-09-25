@@ -109,6 +109,19 @@ export function NamesSection({ config }) {
             />
           </div>
           <p className="name-script">{groom.firstName}</p>
+          <p
+            className="blessing-relation-tag"
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontStyle: 'italic',
+              fontSize: '0.95rem',
+              color: 'var(--muted)',
+              letterSpacing: '0.04em',
+              margin: '0 0 6px',
+            }}
+          >
+            (Only Son)
+          </p>
           <p className="names-parent">
             S/o {groom.father} &amp; {groom.mother}
           </p>
@@ -163,6 +176,19 @@ export function NamesSection({ config }) {
             </div>
           </div>
           <p className="name-script">{bride.firstName}</p>
+          <p
+            className="blessing-relation-tag"
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontStyle: 'italic',
+              fontSize: '0.95rem',
+              color: 'var(--muted)',
+              letterSpacing: '0.04em',
+              margin: '0 0 6px',
+            }}
+          >
+            (Only Daughter)
+          </p>
           <p className="names-parent">
             D/o {bride.father} &amp; {bride.mother}
           </p>

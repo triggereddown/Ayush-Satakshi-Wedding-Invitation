@@ -1,83 +1,92 @@
-/**
- * FloatingElements – scattered emoji petals, flowers, leaves
- * that drift gently over each section (decoration only).
- */
-export function FloatingElements({ theme = 'default', count = 3 }) {
-  const configs = {
-    default: [
-      { el: '🌸', top: '8%',  left: '7%',  delay: '0s',   size: '1.1rem' },
-      { el: '🍂', top: '15%', right: '8%', delay: '1.2s', size: '0.9rem' },
-      { el: '✿',  top: '25%', left: '3%',  delay: '2.1s', size: '1rem',  color: '#c89a42' },
-      { el: '🌺', top: '60%', right: '5%', delay: '0.6s', size: '1rem'   },
-      { el: '🍀', top: '75%', left: '6%',  delay: '3.0s', size: '0.85rem'},
-      { el: '✦',  top: '40%', right: '4%', delay: '1.8s', size: '0.8rem', color: '#c89a42' },
-      { el: '🌼', top: '88%', right: '9%', delay: '0.9s', size: '0.95rem'},
-      { el: '🌿', top: '50%', left: '2%',  delay: '2.5s', size: '0.85rem'},
-    ],
-    haldi: [
-      { el: '✿',  top: '10%', left: '6%',  delay: '0s',   size: '1.1rem', color: '#d4920a' },
-      { el: '🌼', top: '18%', right: '7%', delay: '1s',   size: '1rem'   },
-      { el: '✦',  top: '35%', left: '4%',  delay: '2s',   size: '0.9rem', color: '#c89a42' },
-      { el: '🌸', top: '55%', right: '5%', delay: '0.5s', size: '1rem'   },
-      { el: '🌾', top: '70%', left: '5%',  delay: '1.5s', size: '0.85rem'},
-      { el: '⭐', top: '82%', right: '8%', delay: '2.5s', size: '0.8rem', color: '#d4920a' },
-    ],
-    mehndi: [
-      { el: '🍃', top: '8%',  left: '5%',  delay: '0s',   size: '1rem'   },
-      { el: '✿',  top: '20%', right: '6%', delay: '1.4s', size: '1.1rem', color: '#4a7c59' },
-      { el: '🌺', top: '40%', left: '3%',  delay: '0.7s', size: '1rem'   },
-      { el: '🍀', top: '55%', right: '4%', delay: '2.2s', size: '0.9rem' },
-      { el: '🌿', top: '72%', left: '6%',  delay: '1s',   size: '0.85rem'},
-      { el: '🦋', top: '30%', right: '8%', delay: '3s',   size: '1.1rem' },
-    ],
-    sangeet: [
-      { el: '🎵', top: '12%', left: '7%',  delay: '0s',   size: '1.2rem' },
-      { el: '✦',  top: '22%', right: '8%', delay: '1s',   size: '1rem',  color: '#8a86cc' },
-      { el: '🎶', top: '45%', left: '4%',  delay: '2.1s', size: '1.1rem' },
-      { el: '💫', top: '60%', right: '5%', delay: '0.5s', size: '1rem'   },
-      { el: '⭐', top: '75%', left: '5%',  delay: '1.8s', size: '0.9rem', color: '#c89a42' },
-      { el: '🎵', top: '85%', right: '7%', delay: '2.7s', size: '1rem'   },
-    ],
-    wedding: [
-      { el: '🌸', top: '8%',  left: '6%',  delay: '0s',   size: '1rem'   },
-      { el: '✦',  top: '18%', right: '7%', delay: '1.2s', size: '0.9rem', color: '#c89a42' },
-      { el: '🌹', top: '38%', left: '3%',  delay: '2.4s', size: '1.1rem' },
-      { el: '🍃', top: '55%', right: '5%', delay: '0.6s', size: '0.9rem' },
-      { el: '🌺', top: '70%', left: '5%',  delay: '1.8s', size: '1rem'   },
-      { el: '✿',  top: '82%', right: '8%', delay: '3s',   size: '0.9rem', color: '#c89a42' },
-    ],
-    reception: [
-      { el: '✨', top: '10%', left: '7%',  delay: '0s',   size: '1.2rem', color: '#c89a42' },
-      { el: '🥂', top: '20%', right: '8%', delay: '1.2s', size: '1rem'   },
-      { el: '✦',  top: '40%', left: '4%',  delay: '2s',   size: '1rem',  color: '#e0c068' },
-      { el: '💫', top: '58%', right: '6%', delay: '0.6s', size: '1.1rem' },
-      { el: '⭐', top: '72%', left: '6%',  delay: '1.6s', size: '0.9rem', color: '#c89a42' },
-      { el: '🌸', top: '85%', right: '7%', delay: '2.8s', size: '1rem'   },
-    ],
-  };
+import { useMemo } from 'react';
 
-  const items = configs[theme] || configs.default;
+/**
+ * FloatingElements – 3D depth-falling petals and flowers.
+ *
+ * Renders a fixed-position overlay layer so petals are NEVER clipped by
+ * the parent section's overflow, and always visible on screen.
+ * The layer is pointer-events:none so it never interferes with touch.
+ */
+
+const THEMES = {
+  default: {
+    symbols: ['🌸', '🌺', '✿', '🍂', '🌼', '✦', '🌿', '🍃'],
+    colors:  [null, null, '#c89a42', null, null, '#c89a42', null, null],
+  },
+  haldi: {
+    symbols: ['✿', '🌼', '✦', '🌸', '🌾', '⭐'],
+    colors:  ['#d4920a', null, '#c89a42', null, null, '#d4920a'],
+  },
+  mehndi: {
+    symbols: ['🍃', '✿', '🌺', '🍀', '🌿', '🦋'],
+    colors:  [null, '#4a7c59', null, null, null, null],
+  },
+  sangeet: {
+    symbols: ['🎵', '✦', '🎶', '💫', '⭐', '🎵'],
+    colors:  [null, '#8a86cc', null, null, '#c89a42', null],
+  },
+  wedding: {
+    symbols: ['🌸', '✦', '🌹', '🍃', '🌺', '✿'],
+    colors:  [null, '#c89a42', null, null, null, '#c89a42'],
+  },
+  reception: {
+    symbols: ['✨', '🥂', '✦', '💫', '⭐', '🌸'],
+    colors:  ['#c89a42', null, '#e0c068', null, '#c89a42', null],
+  },
+};
+
+// Deterministic pseudo-random — stable across re-renders
+function sr(seed) {
+  const x = Math.sin(seed + 1) * 10000;
+  return x - Math.floor(x);
+}
+
+export function FloatingElements({ theme = 'default', count = 6 }) {
+  const { symbols, colors } = THEMES[theme] || THEMES.default;
+
+  const particles = useMemo(() => {
+    const n = Math.min(count, 12);
+    return Array.from({ length: n }, (_, i) => {
+      const startX  = 3 + sr(i * 31 + 1) * 94;            // 3%–97%
+      const dur     = 12 + sr(i * 31 + 2) * 10;            // 12s–22s
+      const delay   = -(sr(i * 31 + 3) * dur);             // stagger: already mid-flight
+      const size    = 0.9 + sr(i * 31 + 4) * 0.7;          // 0.9rem–1.6rem
+      const swayPx  = (22 + sr(i * 31 + 5) * 55)
+                      * (sr(i * 31 + 6) > 0.5 ? 1 : -1);
+      const rotDeg  = (110 + sr(i * 31 + 7) * 230)
+                      * (sr(i * 31 + 8) > 0.5 ? 1 : -1);
+      const depth   = 0.48 + sr(i * 31 + 9) * 0.57;        // 0.48–1.05 for z illusion
+      const opacity = 0.2 + depth * 0.45;
+
+      return {
+        sym:   symbols[i % symbols.length],
+        color: colors[i % colors.length],
+        startX, dur, delay, size, swayPx, rotDeg, depth, opacity,
+      };
+    });
+  }, [theme, count, symbols, colors]);
 
   return (
-    <>
-      {items.slice(0, count).map((item, i) => (
+    <div className="fall-layer" aria-hidden="true">
+      {particles.map((p, i) => (
         <span
           key={i}
-          className="float-el"
-          aria-hidden="true"
+          className="fall-el"
           style={{
-            top: item.top,
-            left: item.left,
-            right: item.right,
-            fontSize: item.size,
-            color: item.color || undefined,
-            animationDelay: item.delay,
-            animationDuration: `${6 + (i % 4)}s`,
+            left:              `${p.startX}%`,
+            fontSize:          `${p.size}rem`,
+            color:             p.color || undefined,
+            animationDuration: `${p.dur}s`,
+            animationDelay:    `${p.delay}s`,
+            '--sway':          `${p.swayPx}px`,
+            '--rot':           `${p.rotDeg}deg`,
+            '--depth':         p.depth,
+            '--op':            p.opacity,
           }}
         >
-          {item.el}
+          {p.sym}
         </span>
       ))}
-    </>
+    </div>
   );
 }

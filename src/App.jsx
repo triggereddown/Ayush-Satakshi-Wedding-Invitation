@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './styles/global.css';
 import { weddingConfig } from './config/weddingConfig';
+import { PetalShower } from './components/shared/PetalShower';
 
 // Sections
 import { CoverSection }         from './components/cover/CoverSection';
@@ -96,6 +97,9 @@ function App() {
     <>
       {/* Background audio track */}
       <audio src="/audio/background.mp3" preload="auto" loop id="bg-audio"></audio>
+
+      {/* Global page-wide falling petal shower — fixed, scroll-safe, pointer-events:none */}
+      {isOpened && <PetalShower count={28} />}
 
       {/* Floating Sticky Mute/Unmute button - always stays fixed in viewport */}
       {isOpened && (

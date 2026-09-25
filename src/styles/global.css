@@ -1370,36 +1370,174 @@ button, input, textarea, select {
 }
 
 /* ============================================================
-   SCATTERED FLOATING ELEMENTS
+   3D DEPTH-FALLING FLOATING ELEMENTS — GLOBAL PETAL SHOWER
    ============================================================ */
+
+/* ── Global fixed-position layer (PetalShower) ─────────────── */
+.petal-shower-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;        /* petals vanish cleanly at viewport edge */
+  z-index: 9;              /* above content but below modals/overlays */
+  /* never affects scroll or layout */
+}
+
+.petal-fall {
+  position: absolute;
+  top: -3rem;              /* spawn above viewport */
+  display: inline-block;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform, opacity;
+  animation-name: petal-fall-3d;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes petal-fall-3d {
+  0% {
+    transform:
+      translateY(0)
+      translateX(0)
+      scale(calc(var(--depth, 0.75) * 0.55))
+      rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--op, 0.45);
+  }
+  /* Sway outward */
+  28% {
+    transform:
+      translateY(28vh)
+      translateX(calc(var(--sway, 30px) * 0.5))
+      scale(calc(var(--depth, 0.75) * 0.78))
+      rotate(calc(var(--rot, 180deg) * 0.28));
+    opacity: var(--op, 0.45);
+  }
+  /* Full sway peak */
+  52% {
+    transform:
+      translateY(52vh)
+      translateX(var(--sway, 30px))
+      scale(var(--depth, 0.75))
+      rotate(calc(var(--rot, 180deg) * 0.52));
+    opacity: var(--op, 0.45);
+  }
+  /* Drift back */
+  76% {
+    transform:
+      translateY(76vh)
+      translateX(calc(var(--sway, 30px) * 0.3))
+      scale(calc(var(--depth, 0.75) * 0.88))
+      rotate(calc(var(--rot, 180deg) * 0.78));
+    opacity: var(--op, 0.45);
+  }
+  92% {
+    opacity: var(--op, 0.45);
+  }
+  100% {
+    transform:
+      translateY(105vh)
+      translateX(calc(var(--sway, 30px) * -0.15))
+      scale(calc(var(--depth, 0.75) * 0.65))
+      rotate(var(--rot, 180deg));
+    opacity: 0;
+  }
+}
+
+
+/* The layer container — absolutely fills the parent section */
+.fall-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Sections hosting floating petals must be positioned */
+section {
+  position: relative;
+}
+
+.fall-el {
+  position: absolute;
+  top: -2rem;        /* start just above section top edge */
+  pointer-events: none;
+  will-change: transform, opacity;
+  display: inline-block;
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  animation-name: fall-3d;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes fall-3d {
+  0% {
+    transform:
+      translateY(0)
+      translateX(0px)
+      scale(calc(var(--depth, 0.75) * 0.6))
+      rotate(0deg);
+    opacity: 0;
+  }
+  6% {
+    opacity: var(--op, 0.5);
+  }
+  25% {
+    transform:
+      translateY(22vh)
+      translateX(calc(var(--sway, 30px) * 0.45))
+      scale(calc(var(--depth, 0.75) * 0.8))
+      rotate(calc(var(--rot, 150deg) * 0.22));
+    opacity: var(--op, 0.5);
+  }
+  50% {
+    transform:
+      translateY(46vh)
+      translateX(var(--sway, 30px))
+      scale(var(--depth, 0.75))
+      rotate(calc(var(--rot, 150deg) * 0.5));
+    opacity: var(--op, 0.5);
+  }
+  75% {
+    transform:
+      translateY(70vh)
+      translateX(calc(var(--sway, 30px) * 0.35))
+      scale(calc(var(--depth, 0.75) * 0.9))
+      rotate(calc(var(--rot, 150deg) * 0.78));
+    opacity: var(--op, 0.5);
+  }
+  90% {
+    opacity: var(--op, 0.5);
+  }
+  100% {
+    transform:
+      translateY(100vh)
+      translateX(calc(var(--sway, 30px) * -0.1))
+      scale(calc(var(--depth, 0.75) * 0.7))
+      rotate(var(--rot, 150deg));
+    opacity: 0;
+  }
+}
+
+/* Legacy compat */
 .float-el {
   position: absolute;
   pointer-events: none;
-  animation: drift 8s ease-in-out infinite;
-}
-
-.float-petal-pink {
-  font-size: 1rem;
-  color: #f0a0b8;
-  opacity: 0.7;
-}
-
-.float-petal-red {
-  font-size: 1.1rem;
-  color: #cc3344;
-  opacity: 0.65;
-}
-
-.float-flower-gold {
-  font-size: 0.9rem;
-  color: var(--gold);
-  opacity: 0.7;
-}
-
-.float-leaf {
-  font-size: 0.85rem;
-  color: #6aaa7a;
-  opacity: 0.6;
+  user-select: none;
 }
 
 .float-butterfly {

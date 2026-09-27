@@ -20,7 +20,7 @@ export const weddingConfig = {
     lastName: 'Bhattacharjee',
     father: 'Mr. Biplab Bhattacharjee',
     mother: 'Mrs. Chinmoyee Bhattacharjee',
-    grandfather: 'Late Mr. Ramendu Kishore Bhattacharjee',
+    grandfather: 'Late Mr. R.K. Bhattacharjee',
     grandmother: 'Late Mrs. Bijaya Bhattacharjee',
   },
 

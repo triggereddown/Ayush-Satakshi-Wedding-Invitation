@@ -53,9 +53,10 @@ export function WeddingCard({ event }) {
             <p
               style={{
                 fontFamily: 'var(--font-sc)',
-                fontSize: '0.7rem',
+                fontSize: '0.76rem',
+                fontWeight: 600,
                 letterSpacing: '0.18em',
-                color: 'var(--muted)',
+                color: '#5A222A',
                 marginTop: 8,
               }}
             >

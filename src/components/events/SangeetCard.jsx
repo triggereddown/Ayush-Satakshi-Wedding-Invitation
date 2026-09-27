@@ -46,13 +46,13 @@ export function SangeetCard({ event }) {
               alt="SR"
               style={{ width: 54, margin: '0 auto 10px', opacity: 0.85 }}
             />
-            <p className="event-hashtag" style={{ color: '#c8c4f0' }}>
+            <p className="event-hashtag" style={{ color: '#e0dcff', fontWeight: 600 }}>
               {event.hashtag}
             </p>
-            <p className="event-join-text" style={{ color: '#9090c8' }}>
+            <p className="event-join-text" style={{ color: '#dcd8fc', fontWeight: 600, fontSize: '0.68rem' }}>
               {event.joinText}
             </p>
-            <p className="event-tagline" style={{ color: '#9898c4' }}>
+            <p className="event-tagline" style={{ color: '#f0ecff', fontSize: '0.98rem', fontWeight: 500 }}>
               {event.tagline}
             </p>
 

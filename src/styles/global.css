@@ -27,8 +27,9 @@
   --paper-white: #fffdf8;
   --ink: #3a2218;
   --ink-soft: #4f3427;
-  --muted: #7f6656;
-  --muted-light: #a08878;
+  --muted: #5A222A;
+  --muted-light: #6B2932;
+  --wine-dark: #5A222A;
 
   /* Maroon / Wine (Wedding / Closing) */
   --wine: #7b1c2a;
@@ -38,7 +39,7 @@
 
   /* Gold */
   --gold: #c89a42;
-  --gold-deep: #a8792a;
+  --gold-deep: #8c5f18;
   --gold-light: #e8c878;
   --gold-soft: rgba(200, 154, 66, 0.2);
 
@@ -149,11 +150,11 @@ button, input, textarea, select {
 /* Eyebrow / Label */
 .eyebrow {
   font-family: var(--font-sc);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--vermillion);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* Section header title */
@@ -181,7 +182,7 @@ button, input, textarea, select {
 .weds-text {
   font-family: var(--font-script);
   font-size: clamp(1.4rem, 5vw, 2rem);
-  color: var(--muted);
+  color: #6B2932;
   line-height: 1.2;
   word-break: keep-all;
 }
@@ -717,8 +718,9 @@ button, input, textarea, select {
 
 .blessing-om {
   font-family: var(--font-sc);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.3em;
+  font-weight: 600;
   color: var(--gold-deep);
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -740,10 +742,11 @@ button, input, textarea, select {
   position: relative;
   z-index: 2;
   font-family: var(--font-sc);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
   line-height: 2;
-  color: var(--muted);
+  color: #5A222A;
   text-transform: uppercase;
   margin-bottom: 32px;
 }
@@ -752,9 +755,10 @@ button, input, textarea, select {
   position: relative;
   z-index: 2;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
   line-height: 1.7;
-  color: var(--muted);
+  color: #5A222A;
 }
 
 /* ============================================================
@@ -789,16 +793,18 @@ button, input, textarea, select {
 
 .names-parent {
   font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #5A222A;
   letter-spacing: 0.02em;
 }
 
 .names-grandparent {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.78rem;
-  color: var(--muted-light);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #6B2932;
 }
 
 .names-divider {
@@ -1047,25 +1053,28 @@ button, input, textarea, select {
 .event-hashtag {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1rem;
-  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #5A222A;
   margin-bottom: 8px;
 }
 
 .event-join-text {
   font-family: var(--font-sc);
-  font-size: 0.58rem;
-  letter-spacing: 0.3em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #5A222A;
   margin-bottom: 4px;
 }
 
 .event-tagline {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.9rem;
-  color: var(--muted-light);
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #6B2932;
   margin-bottom: 20px;
   line-height: 1.5;
 }
@@ -1102,11 +1111,11 @@ button, input, textarea, select {
 
 /* SANGEET colors */
 .event-card-sangeet .event-inner-card { background: rgba(30,25,65,0.72); }
-.event-card-sangeet .event-ceremony-name { color: #e8e4ff; }
-.event-card-sangeet .event-hashtag { color: #c8c4f0; }
-.event-card-sangeet .event-join-text { color: #a8a4d8; }
-.event-card-sangeet .event-tagline { color: #a0a0c8; }
-.event-card-sangeet .pill { background: rgba(60,55,120,0.6); color: #e0dcff; border-color: var(--sangeet-light); }
+.event-card-sangeet .event-ceremony-name { color: #f4f0ff; }
+.event-card-sangeet .event-hashtag { color: #e0dcff; font-weight: 600; }
+.event-card-sangeet .event-join-text { color: #dcd8fc; font-weight: 600; font-size: 0.68rem; }
+.event-card-sangeet .event-tagline { color: #f0ecff; font-weight: 500; font-size: 0.98rem; }
+.event-card-sangeet .pill { background: rgba(60,55,120,0.6); color: #f4f0ff; border-color: var(--sangeet-light); }
 .event-card-sangeet .event-couple-illustration { mix-blend-mode: normal; background: transparent; }
 
 /* WEDDING colors */
@@ -1147,8 +1156,9 @@ button, input, textarea, select {
   align-items: center;
   padding: 8px 0;
   font-family: var(--font-body);
-  font-size: 0.92rem;
-  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #5A222A;
   border-bottom: 1px solid rgba(200,154,66,0.15);
 }
 
@@ -1163,9 +1173,10 @@ button, input, textarea, select {
 
 .ritual-time {
   font-family: var(--font-sc);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--muted);
+  color: #6B2932;
 }
 
 /* ============================================================
@@ -1209,10 +1220,11 @@ button, input, textarea, select {
 
 .wardrobe-card-title {
   font-family: var(--font-sc);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-soft);
   margin-bottom: 4px;
 }
 
@@ -1230,9 +1242,10 @@ button, input, textarea, select {
 
 .wardrobe-card-desc {
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  font-weight: 500;
   line-height: 1.55;
-  color: var(--muted);
+  color: var(--ink);
 }
 
 /* ============================================================
@@ -1250,10 +1263,11 @@ button, input, textarea, select {
 
 .venue-where-label {
   font-family: var(--font-sc);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #5A222A;
   margin-bottom: 8px;
 }
 
@@ -1270,17 +1284,18 @@ button, input, textarea, select {
 
 .venue-address {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--wine);
+  color: #5A222A;
   margin-bottom: 6px;
 }
 
 .venue-sub {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.85rem;
-  color: var(--muted-light);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #6B2932;
   margin-bottom: 28px;
 }
 
@@ -1320,10 +1335,11 @@ button, input, textarea, select {
 
 .closing-with-love {
   font-family: var(--font-sc);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   letter-spacing: 0.38em;
+  font-weight: 600;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: #fae0a2;
   margin-bottom: 12px;
 }
 
@@ -1352,16 +1368,18 @@ button, input, textarea, select {
 .closing-dates {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1rem;
-  color: rgba(248,234,215,0.75);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #fff2e0;
   margin-bottom: 12px;
 }
 
 .closing-hashtag {
   font-family: var(--font-sc);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
-  color: rgba(248,234,215,0.55);
+  color: #f5dfbe;
 }
 
 .closing-petals {
@@ -2050,8 +2068,9 @@ section {
 .shankha-hero-sub {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.76rem;
-  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #6B2932;
   margin-top: 2px;
 }
 

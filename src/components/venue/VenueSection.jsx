@@ -26,8 +26,9 @@ export function VenueSection({ config }) {
         <p
           style={{
             fontFamily: 'var(--font-body)',
-            fontSize: '0.95rem',
-            color: 'var(--muted)',
+            fontSize: '1rem',
+            fontWeight: 500,
+            color: '#5A222A',
             marginBottom: 12,
           }}
         >

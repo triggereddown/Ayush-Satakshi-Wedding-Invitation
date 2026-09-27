@@ -48,13 +48,13 @@ export function ReceptionCard({ event }) {
               alt="AS"
               style={{ width: 54, margin: '0 auto 10px', opacity: 0.9 }}
             />
-            <p className="event-hashtag" style={{ color: '#e8c97e' }}>
+            <p className="event-hashtag" style={{ color: '#fae0a2', fontWeight: 600 }}>
               {event.hashtag}
             </p>
-            <p className="event-join-text" style={{ color: '#c4c8e8' }}>
+            <p className="event-join-text" style={{ color: '#e4e7fc', fontWeight: 600, fontSize: '0.68rem' }}>
               {event.joinText}
             </p>
-            <p className="event-tagline" style={{ color: '#a0a6d0' }}>
+            <p className="event-tagline" style={{ color: '#ffffff', fontSize: '0.98rem', fontWeight: 500 }}>
               {event.tagline}
             </p>
 

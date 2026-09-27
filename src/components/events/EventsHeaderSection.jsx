@@ -27,7 +27,7 @@ export function EventsHeaderSection({ config }) {
         <FadeIn delay={160}>
           <p
             className="eyebrow"
-            style={{ marginTop: 12, color: 'var(--muted)' }}
+            style={{ marginTop: 12, color: '#5A222A', fontWeight: 600, fontSize: '0.72rem' }}
           >
             {eventsScheduleHeader.subtitle}
           </p>

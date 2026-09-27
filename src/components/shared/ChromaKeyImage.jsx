@@ -17,6 +17,20 @@ export function ChromaKeyImage({
   tolerance = 60,
   ...props
 }) {
+  const isPreKeyed = mode === 'none' || (src && src.endsWith('.webp'));
+  if (isPreKeyed) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        loading="lazy"
+        decoding="async"
+        {...props}
+      />
+    );
+  }
+
   const cacheKey = `${src}_${mode}_${tolerance}_${keyColor.r}_${keyColor.g}_${keyColor.b}`;
   const [processedSrc, setProcessedSrc] = useState(() => chromaCache.get(cacheKey) || src);
 

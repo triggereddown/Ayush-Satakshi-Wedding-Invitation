@@ -1,6 +1,6 @@
 export const assets = {
   opening: {
-    closedCard:       '/generated/bengali_wedding_card_illustration.png',
+    closedCard:       '/generated/bengali_wedding_card_illustration_opt.webp',
     paperBackground:  '/generated/bengali_wedding_bg.webp',
     monogram:         '/generated/wedding_logo.webp',
     toran:            '/generated/marigold_garland_toran_clean.webp',
@@ -13,13 +13,13 @@ export const assets = {
   },
   ganesh:             '/generated/lord_ganesha_motif.webp',
   logo:               '/generated/wedding_logo.webp',
-  bengaliGroom:       '/generated/bengaliGroom.png',
-  bengaliBride:       '/generated/bengaliBride.png',
+  bengaliGroom:       '/generated/bengaliGroom_opt.webp',
+  bengaliBride:       '/generated/bengaliBride_opt.webp',
   shivParvati:        '/generated/shivParvati.webp',
-  weddingCouple:      '/generated/weddingCouple.png',
-  haldiCouple:        '/generated/haldiCouple.png',
+  weddingCouple:      '/generated/weddingCouple_opt.webp',
+  haldiCouple:        '/generated/haldiCouple_opt.webp',
   mehndiCouple:       '/generated/mehehndiCouple.webp',
-  sangeetCouple:      '/generated/sangeetCouple.png',
+  sangeetCouple:      '/generated/sangeetCouple_opt.webp',
 
   // Backgrounds per event
   backgrounds: {
@@ -27,7 +27,7 @@ export const assets = {
     haldi:      '/generated/haldi_ceremony_bg.webp',
     mehndi:     '/generated/mehndi_ceremony_bg.webp',
     sangeet:    '/generated/sangeet_night_bg.webp',
-    wedding:    '/Assets/wedding-assets-generated/backgrounds/wedding-maroon.png',
+    wedding:    '/Assets/wedding-assets-generated/backgrounds/wedding-maroon.webp',
     venue:      '/Assets/wedding-assets-generated/backgrounds/venue-paper.png',
     wardrobe:   '/Assets/wedding-assets-generated/backgrounds/wardrobe-paper.png',
     closing:    '/Assets/wedding-assets-generated/backgrounds/closing-maroon.png',
@@ -46,9 +46,9 @@ export const assets = {
     weddingSeal:'/Assets/wedding-assets-generated/indian-elements/weddingSeal.jpg',
     dhanDurba:  '/Assets/wedding-assets-generated/indian-elements/dhanDurba.jpg',
     bengaliAlpana: '/generated/clean_bengali_alpana_transparent.webp',
-    bengaliAlpanaWhite: '/generated/bengali_alpana_white.png',
-    betelLeaf: '/generated/betel_leaf.png',
-    romanticCouple: '/generated/bengali_romantic_couple.png',
+    bengaliAlpanaWhite: '/generated/bengali_alpana_white.webp',
+    betelLeaf: '/generated/betel_leaf.webp',
+    romanticCouple: '/generated/bengali_romantic_couple.webp',
     bengaliBackground: '/Assets/wedding-assets-generated/indian-elements/bengaliBackground.jpg',
     bengaliToran: '/generated/marigold_garland_toran_clean.webp',
   },
@@ -67,7 +67,7 @@ export const assets = {
   },
 
   // Monogram
-  monogram: '/generated/wedding_logo.png',
+  monogram: '/generated/wedding_logo_opt.webp',
 
   // Floral corners (curated selection)
   floral: {
